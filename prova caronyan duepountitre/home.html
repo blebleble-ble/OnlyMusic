@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">	
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyMusic - Ascolta la tua musica preferita</title>
+		<link rel="stylesheet" href="stile.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyMusic - Ascolta la tua musica preferita</title>
+  <link rel="stylesheet" href="stile.css">
+</head>
+<!-- Pulsante segreto -->
+<!-- Pulsante segreto nascosto -->
+<button id="secretButton" onclick="window.location.href='markplier.html'"
+        style="display: none; position: absolute; top: 5px; left: 5px; z-index: 999;">
+  Vai a markplier
+</button>
+
+<script>
+  document.addEventListener('keydown', function(event) {
+    // Se l'utente preme il tasto "F" (maiuscolo o minuscolo)
+    if (event.key.toLowerCase() === 'f') {
+      const button = document.getElementById('secretButton');
+      button.style.display = 'block';
+    }
+  });
+</script>
+
+<body>
+
+  <header>
+    <img src="scritta_progetto.png" alt="OnlyMusic" style="height:150px">
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="scopri.html">Scopri</a></li>
+        <li><a href="playlist.html">Playlist</a></li>
+        <li><a href="chi_siamo.html">Chi siamo</a></li>
+        <li><a href="progetto.html">Il progetto</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="search-bar">
+      <input type="text" id="search" placeholder="Cerca album o artisti..." onkeyup="searchTracks()" />
+      <button type="button" onclick="searchTracks()">🔍</button>
+    </section>
+
+    <section class="track-list">
+      <h2>🎧 Tracce in evidenza</h2>
+      <ul id="trackList">
+        <li>Location - Playboi Carti</li>
+        <li>Il ballo del QuaQua  - Serena e i Bimbiallegri </li>
+        <li>H.- Tool</li>
+        <li>The Recipe - Kendick Lamar</li>
+       
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 OnlyMusic. Tutti i diritti riservati.</p>
+  </footer>
+
+  <script>
+    // Funzione di ricerca
+    function searchTracks() {
+      const input = document.getElementById('search').value.toLowerCase();
+      const trackList = document.getElementById('trackList');
+      const tracks = trackList.getElementsByTagName('li');
+
+      for (let i = 0; i < tracks.length; i++) {
+        const track = tracks[i];
+        const trackText = track.textContent || track.innerText;
+
+        if (trackText.toLowerCase().includes(input)) {
+          track.style.display = "";
+        } else {
+          track.style.display = "none";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
+	
